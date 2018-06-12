@@ -40,7 +40,17 @@ def lexer(src):
             else:
                 i-=1
                 state = 2
-
+        if state == 2:
+            state = 0
+            i+= 1 
+          
+      
+def calc_candidatos(w):
+      candidatos = []
+      tipo_token = clasi[0]
+        
+      
+      
 def es_aceptada(w):
 
     candidatos = []
