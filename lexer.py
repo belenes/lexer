@@ -51,18 +51,9 @@ def lexer(src):
         if state == 2:
             state = 0
             i+= 1 
+            start = i
           
-      
-def calc_candidatos(word):
-      
-      candidatos = []
-      for (clasi) in Token_Clasificacion:
-            TipoToken = clasi[0]
-            afd = clasi[1]
-            if afd(word):
-                  candidatos.append(clasi)
-            
-            
+                 
 def es_aceptada(word):
 
     candidatos = calc_candidatos(word)
@@ -73,7 +64,14 @@ def es_aceptada(word):
         return False 
     return candidatos
 
-
+def calc_candidatos(word):
+      
+      candidatos = []
+      for (clasi) in Token_Clasificacion:
+            TipoToken = clasi[0]
+            afd = clasi[1]
+            if afd(word):
+                  candidatos.append(clasi)
 
 #Automatas
 
