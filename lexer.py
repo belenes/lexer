@@ -26,7 +26,7 @@ Token_Clasificacion = [("Tipo",a_int),
 
 def lexer(src):
     
-    tokens[]
+    tokens = []
     src = src + " "
     i = 0
     start = 0
