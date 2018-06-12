@@ -1,20 +1,27 @@
-TT = [("<Tipo>","a_int"),
-      ("<Tipo>","a_float")
-      ("<If>","a_if")
-      ("<For>","a_for")
-      ("<While>","a_while")
-      ("<ParAbierto>","a_(")
-      ("<ParCerrado>","a_)")
-      ("<LLaAbierta>","a_{")
-      ("<LLaCerrada>","a_}")
-      ("<+>","a_+")
-      ("<->","a_-")
-      ("<*>","a_*")
-      ("</>","a_/")
-      ("<,>","a_,")
-      ("<;>","a_;")
-      
-      
+TT = [("Tipo",a_int),
+      ("Tipo",a_float),
+      ("If",a_if),
+      ("For",a_for),
+      ("While",a_while),
+      ("ParAbierto", a_ParAbierto),
+      ("ParCerrado", a_ParCerrado),
+      ("LLaAbierta", a_LLaAbierta),
+      ("LLaCerrada", a_LLaCerrada),
+      ("+", a_Mas),
+      ("-", a_Menos),
+      ("*", a_Por),
+      ("/", a_Dividido),
+      (",", a_Coma),
+      (";", a_PuntoComa),
+      (":=", a_PuntoIgual),
+      ("Comparacion", a_Menor),
+      ("Comparacion", a_Mayor),
+      ("Comparacion", a_MayorIgual),
+      ("Comparacion", a_MenorIgual),
+      ("Comparacion",a_Distinto),
+      ("Comparacion", a_IgualIagual),
+      ("Numero", a_Num),
+      ("Identificador", a_Id)
 ]
 
 def lexer(src):
