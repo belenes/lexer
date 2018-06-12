@@ -1,4 +1,4 @@
-TT = [("Tipo",a_int),
+Token_Clasificacion = [("Tipo",a_int),
       ("Tipo",a_float),
       ("If",a_if),
       ("For",a_for),
@@ -25,6 +25,7 @@ TT = [("Tipo",a_int),
 ]
 
 def lexer(src):
+    
     tokens[]
     src = src + " "
     i = 0
@@ -32,7 +33,7 @@ def lexer(src):
     state = 0
     while i<len(src):
         c = src[i]
-        w = src[start: i+1]
+        word = src[start: i+1]
         if state == 0:
             if c.isspace():
                 i+=1
@@ -41,7 +42,7 @@ def lexer(src):
                 start = i
                 state = 1
         if state == 1:
-            if es_aceptada(w) or not c.isspace():
+            if es_aceptada(word) or not c.isspace():
                 i+=1
                 state = 1
             else:
@@ -52,20 +53,25 @@ def lexer(src):
             i+= 1 
           
       
-def calc_candidatos(w):
+def calc_candidatos(word):
+      
       candidatos = []
-      tipo_token = clasi[0]
-        
-      
-      
-def es_aceptada(w):
+      for (clasi) in Token_Clasificacion:
+            TipoToken = clasi[0]
+            afd = clasi[1]
+            if afd(word):
+                  candidatos.append(clasi)
+            
+            
+def es_aceptada(word):
 
-    candidatos = []
+    candidatos = calc_candidatos(word)
 
     if len(candidatos)>0:
         return True
     else:
         return False 
+    return candidatos
 
 
 
