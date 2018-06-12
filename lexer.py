@@ -14,12 +14,12 @@ TT = [("Tipo",a_int),
       (",", a_Coma),
       (";", a_PuntoComa),
       (":=", a_PuntoIgual),
-      ("<", a_Comparacion),
-      (">", a_Comparacion),
-      (">=", a_Comparacion),
-      ("<=", a_Comparacion),
-      ("!=",a_Comparacion),
-      ("==", a_Comparacion),
+      ("Comparacion", a_Menor),
+      ("Comparacion", a_Mayor),
+      ("Comparacion", a_MayorIgual),
+      ("Comparacion", a_MenorIgual),
+      ("Comparacion",a_Distinto),
+      ("Comparacion", a_IgualIgual),
       ("Numero", a_Num),
       ("Identificador", a_Id)
 ]
@@ -66,3 +66,236 @@ def es_aceptada(w):
         return True
     else:
         return False 
+
+
+
+#Automatas
+
+def a_int(src):
+    s = 1
+    for c in scr:
+        if s == 1 and c == "i":
+            s = 2
+        elif s == 2 and c == "n":
+            s = 3
+        elif s == 3 and c == "t":
+            s = 4
+        else:
+            s=-1
+            break
+    return s == 4     
+
+def a_float(src):
+    s = 1
+    for c in scr:
+        if s == 1 and c == 'f':
+            s = 2
+        elif s == 2 and c == 'l':
+            s = 3
+        elif s == 3 and c == 'o':
+            s = 4
+        elif s == 4 and c == 'a':
+            s = 5
+        elif s == 5 and c == 't':
+            s = 6
+        else: 
+            s = -1
+            break
+    return s == 6
+
+def a_if(src):
+    s = 1
+    for c in src:
+        if s == 1 and c=='i':
+            s = 2
+        elif s == 2 and c=='f':
+            s = 3
+        else:
+            s = -1
+            break
+    return s == 3
+
+def a_for(src):
+    s = 1
+    for c in src:
+        if s == 1 and c == 'f':
+            s = 2
+        elif s == 2 and c=='o':
+            s = 3
+        elif s == 3 and c =='r':
+            s = 4
+        else:
+            s = -1
+            break
+    return s == 4
+
+def a_while(src):
+    s = 1
+    for c in src:
+        if s == 1 and c == "w":
+            s = 2
+        elif s == 2 and c == "h":
+            s = 3
+        elif s == 3 and c == "i":
+            s = 4
+        elif s == 4 and c == "l":
+            s = 5
+        elif s == 5 and c == "e":
+            s=6
+        else:
+            s=-1
+            break
+    return s == 6
+
+def a_ParAbierto(src):
+    s = 1
+    for c in src:
+        if s == 1 and c=='(':
+            s == 2
+    return s == 2
+
+def a_ParCerrado(src):
+    s = 1
+    for c in src:
+        if s == 1 and c==')':
+            s == 2
+    return s == 2
+
+def a_LLaAbierta(src):
+    s = 1
+    for c in src:
+        if s==1 and c=='{':
+            s == 2
+    return s == 2
+
+def a_LLaCerrada(src):
+    s = 1
+    for c in src:
+        if s == 1 and c=='}':
+        s=2
+    return s == 2
+
+def a_Mas(src):
+    s = 1
+    for c in src:
+        if s == 1 and c == '+':
+        s = 2
+    return s == 2
+
+def a_Menos(src):
+    s = 1
+    for c in src:
+        if s == 1 and c=='-':
+        s = 2
+    return s == 2
+
+def a_Por(src):
+    s = 1
+    for c in src:
+        if s == 1 and c == '*':
+        s = 2
+    return s == 2
+
+def a_Dividido(src):
+    s = 1
+    for c in src:
+        if s == 1 and c=='/':
+        s = 2
+    return s == 2
+
+def a_Coma(src):
+    s = 1
+    for c in src:
+        if s == 1 and c==',':
+            s = 2
+    return s == 2
+
+def a_PuntoComa(src):
+    s = 1
+    for c in src:
+        if s == 1 and c == ';':
+            s = 2
+    return s == 2
+
+def a_PuntoIgual(src):
+    s = 1
+    for c in src:
+        if s == 1 and c ==':':
+            s = 2
+        elif s == 2 and c == '=':
+            s = 3
+    return s == 3
+
+def a_Menor(src):
+    s = 1
+    for c in src:
+        if s == 1 and c == '<':
+            s = 2
+    return s == 2
+
+def a_Mayor(src):
+    s = 1
+    for c in src:
+        if s == 1 and c == '>':
+            s = 2
+    return s == 2
+
+def a_MayorIgual(src):
+     s = 1
+     for c in src:
+         if s == 1 and c == '>':
+             s = 2
+         elif s == 2 and c == '=':
+             s = 3
+     return s == 3
+
+def a_MenorIgual(src):
+    s = 1
+    for c in src:
+        if s == 1 and c == '<':
+            s = 2
+        elif s == 2 and c == '=':
+            s = 3 
+    return s == 3
+
+def a_Distinto(src):
+    s = 1
+    for c in src:
+        if s == 1 and c == '!':
+            s = 2
+        elif s == 2 and c == '=':
+            s = 3
+    return s == 3
+
+def a_IgualIgual(src):
+    s = 1
+    for c in src:
+        if s == 1 and c == '=':
+            s = 2
+        elif s == 2 and c == '=':
+            s = 3
+    return s == 3
+
+def a_Num(src):
+    s = 1
+    for c in src:
+        if s == 1 and c.isdigit():
+            s = 2
+        elif s == 2 and c.isdigit():
+            s = 2
+        else:
+            s = -1
+            break
+    return s == 2
+
+def a_Id(src):
+    s = 1
+    for c in src:
+        if s == 1 and c.isalpha():
+            s = 2
+        elif s == 2 and c.isalpha():
+            s = 2
+        else:
+            s = -1
+            break
+    return s == 2
