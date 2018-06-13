@@ -14,6 +14,7 @@ Token_Clasificacion = [("Tipo",a_int(src)),
       (",", a_Coma(src)),
       (";", a_PuntoComa(src)),
       (":=", a_PuntoIgual(src)),
+      ("Comparacion", a_Igual(scr)),                
       ("Comparacion", a_Menor(src)),
       ("Comparacion", a_Mayor(src)),
       ("Comparacion", a_MayorIgual(src)),
@@ -231,6 +232,12 @@ def a_PuntoIgual(src):
             s = 3
     return s == 3
 
+def a_Igual(src):
+    s = 1
+    for c in src
+        if s == 1 and c == '=':
+            s = 2
+        return s == 2 
 def a_Menor(src):
     s = 1
     for c in src:
