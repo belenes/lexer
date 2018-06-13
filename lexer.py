@@ -52,10 +52,10 @@ def lexer(src):
                 i-=1
                 state = 2
         if state == 2:
-            state = 0
+            
             i+= 1 
             start = i
-          
+            state = 0
                  
 def es_aceptada(word):
 
@@ -75,7 +75,7 @@ def calc_candidatos(word):
             afd = clasi[1]
             if afd(word):
                   candidatos.append(clasi)
-
+      
 #Automatas
 
 def a_int(src):
