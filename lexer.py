@@ -178,35 +178,35 @@ def a_LLaCerrada(src):
     s = 1
     for c in src:
         if s == 1 and c=='}':
-        s=2
+            s = 2
     return s == 2
 
 def a_Mas(src):
     s = 1
     for c in src:
         if s == 1 and c == '+':
-        s = 2
+            s = 2
     return s == 2
 
 def a_Menos(src):
     s = 1
     for c in src:
         if s == 1 and c=='-':
-        s = 2
+            s = 2
     return s == 2
 
 def a_Por(src):
     s = 1
     for c in src:
         if s == 1 and c == '*':
-        s = 2
+            s = 2
     return s == 2
 
 def a_Dividido(src):
     s = 1
     for c in src:
         if s == 1 and c=='/':
-        s = 2
+            s = 2
     return s == 2
 
 def a_Coma(src):
