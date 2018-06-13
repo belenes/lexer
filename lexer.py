@@ -238,6 +238,7 @@ def a_Igual(src):
         if s == 1 and c == '=':
             s = 2
         return s == 2 
+
 def a_Menor(src):
     s = 1
     for c in src:
