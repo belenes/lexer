@@ -1,0 +1,355 @@
+funcion a_int de variable src
+  estado = 1
+  para caracter en variable src
+      si estado = 1 y caracter en "i"
+      entonces estado = 2
+      sino si estado = 2 y caracter en "n"
+      entonces estado = 3
+      sino si estado = 3 y caracter en "t"
+      entonces estado = 4
+      sino
+      estado = -1
+      romper
+      devuelve estado = 4
+
+funcion a_float de variable src
+  estado = 1
+  para caracter en variable src
+      si estado = 1 y caracter en "f"
+      entonces estado = 2
+      sino si estado = 2 y caracter en "l"
+      entonces estado = 3
+      sino si estado = 3 y caracter en "o"
+      entonces estado = 4
+      sino si estado = 4 y caracter en "a"
+      entonces estado = 5
+      sino si estado = 5 y caracter en "t"
+      entonces estado = 6
+      sino
+      estado = -1
+      romper
+      devuelve estado = 6
+
+funcion a_if de variable src
+  estado = 1
+  para caracter en variable src
+      si estado = 1 and caracter en "i"
+      entonces estado = 2
+      sino si estado = 2 y caracter "f"
+      entonces estado = 3
+      sino
+      entonces estado = -1
+      romper
+      devuelve estado = 3
+
+ funcion a_for de variable src
+  estado = 1
+  para caracter en variable src
+      si estado = 1 y caracter en "f"
+      entonces estado = 2
+      sino si estado = 2 y caracter en "o"
+      entonces estado = 3
+      sino si estado = 3 y caracter en "r"
+      entonces estado = 4
+      sino
+      entonces estado = -1
+      romper
+      devuelve estado = 4
+
+ function a_while en variable src
+  estado = 1
+  para caracter en variable src
+      si estado = 1 y caracter en "w"
+      entonces estado = 2
+      sino si estado = 2 y caracter en "h"
+      entonces estado = 3
+      sino si estado = 3 y caracter en "i"
+      entonces estado = 4
+      sino si estado = 4 y caracter en "l"
+      entonces estado = 5
+      sino si estado = 5 y caracter en "e"
+      sino
+      entonces estado = -1
+      romper
+      devuelve estado = 6
+
+ function a_ParAbierto en variable src
+  estado = 1
+  para caracter en variable src
+      si estado = 1 y caracter en "("
+      entonces estado = 2
+      sino
+      estado = -1
+      romper
+      devuelve estado = 2
+
+  function a_ParCerrado en variable src
+  estado = 1
+  para caracter en variable src
+       si estado = 1 y caracter en ")"
+       entonces estado = 2
+       sino
+       estado = -1
+       romper
+       devuelve estado = 2
+
+   function a_LLaAbierta en variable src
+  estado = 1
+  para caracter en variable src
+          si estado = 1 y caracter en "{"
+          entonces estado = 2
+          sino
+          estado = -1
+          romper
+   devuelve estado = 2
+
+  function a_LLaCerrada en variable src
+  estado = 1
+  para caracter en variable src
+           si estado = 1 y caracter en "}"
+           entonces estado = 2
+           sino
+           estado = -1
+           romper
+   devuelve estado = 2
+
+   funcion a_Mas en variable src
+   estado = 1
+   para caracter en variable src
+          si estado = 1 y caracter en "+"
+          estado = 2
+   devuelve estado = 2
+
+   funcion a_Menos en variable src
+   estado = 1
+   para caracter en variable src
+          si estado = 1 y caracter en "-"
+          estado = 2
+          sino
+          estado = -1
+          romper
+    devuelve estado = 2
+
+    funcion a_Por en variable src
+    estado = 1
+    para caracter en variable src
+          si estado = 1 y caracter en "*"
+          estado = 2
+          sino
+          estado = -1
+          romper
+    devuelve estado = 2
+
+    funcion a_Dividido en variable src
+    estado = 1
+    para caracter en variable src
+          si estado = 1 y caracter en "/"
+          estado = 2
+          sino
+          estado = -1
+          romper
+    devuelve estado = 2
+
+    funcion a_Coma en variable src
+    estado = 1
+    para caracter en variable src
+          si estado = 1 y caracter en ","
+          estado = 2
+          sino
+          estado = -1
+          romper
+     devuelve estado = 2
+
+     funcion a_PuntoComa en variable src
+     estado = 1
+     para caracter en variable src
+          si estado = 1 y caracter en ";"
+          estado = 2
+          sino
+          estado = -1
+          romper
+      devuelve estado = 2
+
+      funcion a_Igual en variable src
+      estado = 1
+      para caracter en variable src
+            si estado = 1 y caracter en "="
+            estado = 2
+            sino
+            estado = -1
+            romper
+      devuelve estado = 2
+
+      funcion a_Menor en variable src
+      estado = 1
+      para caracter en variable src
+            si estado =1 y caracter  en "<"
+            estado = 2
+            sino
+            estado = -1
+            romper
+      devuelve estado = 2
+
+      funcion a_Mayor en variable src
+      estado = 1
+      para caracter en variable src
+            si estado =1 y caracter  en ">"
+            estado = 2
+            sino
+            estado = -1
+            romper
+      devuelve estado = 2
+
+      funcion a_MayorIgual en variable src
+      estado = 1
+      para caracter en variable src
+            si estado =1 y caracter  en ">"
+            estado = 2
+            sino si estado = 2 y caracter en "="
+            estado = 3
+            sino
+            estado = -1
+            romper
+      devuelve estado = 3
+
+      funcion a_MenorIgual en variable src
+      estado = 1
+      para caracter en variable src
+            si estado =1 y caracter  en "<"
+            estado = 2
+            sino si estado = 2 y caracter en "="
+            estado = 3
+            sino
+            estado = -1
+            romper
+      devuelve estado = 3
+
+      funcion a_Distinto en variable src
+      estado = 1
+      para caracter en variable src
+            si estado =1 y caracter  en "!"
+            estado = 2
+            sino si estado = 2 y caracter en "="
+            estado = 3
+            sino
+            estado = -1
+            romper
+      devuelve estado = 3
+
+      funcion a_IgualIgual en variable src
+      estado = 1
+      para caracter en variable src
+            si estado = 1 y caracter  en "="
+            estado = 2
+            sino si estado = 2 y caracter en "="
+            estado = 3
+            sino
+            estado = -1
+            romper
+      devuelve estado = 3
+
+      funcion a_Num en variable src
+      estado = 1
+      para caracter en variable src
+            estado = 1
+            si estado = 1 y caracter es un digito ()
+            estado = 2
+            sino si estado = 2 y caracter es un digito ()
+            estado = 2
+            sino
+            estado = -1
+            romper
+       devuelve estado = 2
+
+       funcion a_Id en variable src
+       estado = 1
+       para caracter en variable src
+            si estado = 1 y caracter es una letra()
+            estado = 2
+            sino si estado = 2 y caracter es una letra()
+            estado = 2
+            sino
+            estado = -1
+            romper
+       devuelve estado = 2
+
+       Token_Clasificacion = [
+             ("Int", a_int),
+             ("Float", a_float),
+             ("If", a_if),
+             ("For", a_for),
+             ("While", a_while),
+             ("(", a_ParAbierto),
+             (")", a_ParCerrado),
+             ("{", a_LLaAbierta),
+             ("}", a_LLaCerrada),
+             ("+", a_Mas),
+             ("-", a_Menos),
+             ("*", a_Por),
+             ("/", a_Dividido),
+             (",", a_Coma),
+             (";", a_PuntoComa),
+             (":=", a_PuntoIgual),
+             ("Comparacion", a_Menor),
+             ("Comparacion", a_Mayor),
+             ("Comparacion", a_MayorIgual),
+             ("Comparacion", a_MenorIgual),
+             ("Comparacion",a_Distinto),
+             ("Comparacion", a_IgualIgual),
+             ("Numero", a_Num),
+             ("Identificador", a_Id)
+       ]
+
+       funcion lexer en variable src
+               tokens = []
+               src = src + espacio en blanco
+               i = 0
+               empieza = 0
+               estado = 0
+               mientras i < a la longitud de variable src
+                    caracter = src[i]
+                    palabra = src[empieza: i+1]
+                    si estado = 0
+                      si caracter es un espacio ()
+                        i+=1
+                        estado = 0
+                      sino
+                        empieza = i
+                        estado = 1
+                    sino si estado = 1
+                      si es_aceptada de variable palabra y caracter no es un espacio()
+                        i+=1
+                        estado = 1
+                      sino
+                      i-=1
+                      estado = 2
+                    sino si estado = 2
+                        candidatos = []
+                        candidatos = calc_candidatos(palabra)
+                        si longitud de candidatos > 0
+                           token = (candidatos[0], palabra)
+                           tokens.finaldelista(token)
+                        sino
+                            tokens = []
+                            imprimir ("ERROR: La cadena ingresada es invalida")
+                            devuelve tokens
+                        i+=1
+                        empieza = i
+                        estado = 0
+                      sino
+                        imprimir ("ERROR: Cadena no aceptada")
+                  devuelve tokens
+
+            funcion es_aceptada en variable palabra
+                  candidatos = calc_candidatos de variable palabra
+                  si longitud(candidatos) > 0
+                  devuelve verdadero
+                  sino
+                  devuelve falso
+
+            funcion calc_candidatos en variable palabra
+                   candidatos = []
+                   para (clasi, afd) en Token_Clasificacion
+                      if afd de variable palabra
+                            candidatos.finaldelista(clasi)
+                    devuelve candidatos
