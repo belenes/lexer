@@ -1,86 +1,7 @@
-Token_Clasificacion = [("Tipo",a_int(src)),
-      ("Tipo",a_float(src)),
-      ("If",a_if(src)),
-      ("For",a_for(src)),
-      ("While",a_while(src)),
-      ("(", a_ParAbierto(src)),
-      (")", a_ParCerrado(src)),
-      ("{", a_LLaAbierta(src)),
-      ("}", a_LLaCerrada(src)),
-      ("+", a_Mas(src)),
-      ("-", a_Menos(src)),
-      ("*", a_Por(src)),
-      ("/", a_Dividido(src)),
-      (",", a_Coma(src)),
-      (";", a_PuntoComa(src)),
-      (":=", a_PuntoIgual(src)),
-      ("=", a_Igual(src)),
-      ("Comparacion", a_Igual(scr)),                
-      ("Comparacion", a_Menor(src)),
-      ("Comparacion", a_Mayor(src)),
-      ("Comparacion", a_MayorIgual(src)),
-      ("Comparacion", a_MenorIgual(src)),
-      ("Comparacion",a_Distinto(src)),
-      ("Comparacion", a_IgualIgual(src)),
-      ("Numero", a_Num(src)),
-      ("Identificador", a_Id(src))
-]
-
-
-def lexer(src):
-    
-    tokens = []
-    src = src + " "
-    i = 0
-    start = 0
-    state = 0
-    while i<len(src):
-        c = src[i]
-        word = src[start: i+1]
-        if state == 0:
-            if c.isspace():
-                i+=1
-                state = 0
-            else:
-                start = i
-                state = 1
-        if state == 1:
-            if es_aceptada(word) or not c.isspace():
-                i+=1
-                state = 1
-            else:
-                i-=1
-                state = 2
-        if state == 2:
-            
-            i+= 1 
-            start = i
-            state = 0
-                 
-def es_aceptada(word):
-
-    candidatos = calc_candidatos(word)
-
-    if len(candidatos)>0:
-        return True
-    else:
-        return False 
-    return candidatos
-
-def calc_candidatos(word):
-      
-      candidatos = []
-      for (clasi) in Token_Clasificacion:
-            TipoToken = clasi[0]
-            afd = clasi[1]
-            if afd(word):
-                  candidatos.append(clasi)
-      
 #Automatas
-
 def a_int(src):
     s = 1
-    for c in scr:
+    for c in src:
         if s == 1 and c == "i":
             s = 2
         elif s == 2 and c == "n":
@@ -88,13 +9,13 @@ def a_int(src):
         elif s == 3 and c == "t":
             s = 4
         else:
-            s=-1
+            s = -1
             break
-    return s == 4     
+    return s == 4
 
 def a_float(src):
     s = 1
-    for c in scr:
+    for c in src:
         if s == 1 and c == 'f':
             s = 2
         elif s == 2 and c == 'l':
@@ -105,7 +26,7 @@ def a_float(src):
             s = 5
         elif s == 5 and c == 't':
             s = 6
-        else: 
+        else:
             s = -1
             break
     return s == 6
@@ -113,23 +34,40 @@ def a_float(src):
 def a_if(src):
     s = 1
     for c in src:
-        if s == 1 and c=='i':
+        if s == 1 and c == 'i':
             s = 2
-        elif s == 2 and c=='f':
+        elif s == 2 and c == 'f':
             s = 3
         else:
             s = -1
             break
     return s == 3
 
+def a_else(src):
+    s = 1
+    for c in src:
+        if s == 1 and c == 'e':
+            s = 2
+        elif s == 2 and c == 'l':
+            s = 3
+        elif s == 3 and c == 's':
+            s = 4
+        elif s == 4 and c == 'e':
+            s = 5
+        else:
+            s = -1
+            break
+    return s == 5
+
+
 def a_for(src):
     s = 1
     for c in src:
         if s == 1 and c == 'f':
             s = 2
-        elif s == 2 and c=='o':
+        elif s == 2 and c == 'o':
             s = 3
-        elif s == 3 and c =='r':
+        elif s == 3 and c == 'r':
             s = 4
         else:
             s = -1
@@ -148,38 +86,50 @@ def a_while(src):
         elif s == 4 and c == "l":
             s = 5
         elif s == 5 and c == "e":
-            s=6
+            s = 6
         else:
-            s=-1
+            s = -1
             break
     return s == 6
 
 def a_ParAbierto(src):
     s = 1
     for c in src:
-        if s == 1 and c=='(':
-            s == 2
+        if s == 1 and c == "(":
+            s = 2
+        else:
+            s = -1
+            break
     return s == 2
 
 def a_ParCerrado(src):
     s = 1
     for c in src:
-        if s == 1 and c==')':
-            s == 2
+        if s == 1 and c == ")":
+            s = 2
+        else:
+            s = -1
+            break
     return s == 2
 
 def a_LLaAbierta(src):
     s = 1
     for c in src:
-        if s==1 and c=='{':
-            s == 2
+        if s==1 and c == "{":
+            s = 2
+        else:
+            s = -1
+            break
     return s == 2
 
 def a_LLaCerrada(src):
     s = 1
     for c in src:
-        if s == 1 and c=='}':
+        if s == 1 and c == "}":
             s = 2
+        else:
+            s = -1
+            break
     return s == 2
 
 def a_Mas(src):
@@ -192,8 +142,11 @@ def a_Mas(src):
 def a_Menos(src):
     s = 1
     for c in src:
-        if s == 1 and c=='-':
+        if s == 1 and c == '-':
             s = 2
+        else:
+            s = -1
+            break
     return s == 2
 
 def a_Por(src):
@@ -201,20 +154,29 @@ def a_Por(src):
     for c in src:
         if s == 1 and c == '*':
             s = 2
+        else:
+            s = -1
+            break
     return s == 2
 
 def a_Dividido(src):
     s = 1
     for c in src:
-        if s == 1 and c=='/':
+        if s == 1 and c == '/':
             s = 2
+        else:
+            s = -1
+            break
     return s == 2
 
 def a_Coma(src):
     s = 1
     for c in src:
-        if s == 1 and c==',':
+        if s == 1 and c == ',':
             s = 2
+        else:
+            s = -1
+            break
     return s == 2
 
 def a_PuntoComa(src):
@@ -222,15 +184,21 @@ def a_PuntoComa(src):
     for c in src:
         if s == 1 and c == ';':
             s = 2
+        else:
+            s = -1
+            break
     return s == 2
 
 def a_PuntoIgual(src):
     s = 1
     for c in src:
-        if s == 1 and c ==':':
+        if s == 1 and c == ':':
             s = 2
         elif s == 2 and c == '=':
             s = 3
+        else:
+            s = -1
+            break
     return s == 3
 
 def a_Igual(src):
@@ -238,13 +206,19 @@ def a_Igual(src):
     for c in src:
         if s == 1 and c == '=':
             s = 2
-    return s == 2 
+        else:
+            s = -1
+            break
+    return s == 2
 
 def a_Menor(src):
     s = 1
     for c in src:
         if s == 1 and c == '<':
             s = 2
+        else:
+            s = -1
+            break
     return s == 2
 
 def a_Mayor(src):
@@ -252,6 +226,9 @@ def a_Mayor(src):
     for c in src:
         if s == 1 and c == '>':
             s = 2
+        else:
+            s = -1
+            break
     return s == 2
 
 def a_MayorIgual(src):
@@ -272,7 +249,7 @@ def a_MenorIgual(src):
         if s == 1 and c == '<':
             s = 2
         elif s == 2 and c == '=':
-            s = 3 
+            s = 3
         else:
             s = -1
             break
@@ -325,3 +302,121 @@ def a_Id(src):
             s = -1
             break
     return s == 2
+
+def ERROR_TOKEN_PARCIAL(src):
+    s = 1
+    for c in src:
+        if s == 1 and c == ":":
+            s = 2
+        elif s == 1 and c == "!":
+            s = 2
+        elif s == 1 and c == "=":
+            s = 2
+        else:
+            s = -1
+            break
+    return s == 2
+
+
+
+
+Token_Clasificacion = [
+      ("Int", a_int),
+      ("Float", a_float),
+      ("If", a_if),
+      ("Else", a_else),
+      ("For", a_for),
+      ("While", a_while),
+      ("(", a_ParAbierto),
+      (")", a_ParCerrado),
+      ("{", a_LLaAbierta),
+      ("}", a_LLaCerrada),
+      ("+", a_Mas),
+      ("-", a_Menos),
+      ("*", a_Por),
+      ("/", a_Dividido),
+      (",", a_Coma),
+      (";", a_PuntoComa),
+      (":=", a_PuntoIgual),
+      ("<", a_Menor),
+      (">", a_Mayor),
+      (">=", a_MayorIgual),
+      ("<=", a_MenorIgual),
+      ("!=",a_Distinto),
+      ("==", a_IgualIgual),
+      ("Numero", a_Num),
+      ("Identificador", a_Id),
+      ("ERROR_TP", ERROR_TOKEN_PARCIAL)
+]
+
+def lexer(src):
+    tokens = []
+    src = src + " "
+    i = 0
+    start = 0
+    state = 0
+    while i<len(src):
+        c = src[i]
+        word = src[start: i+1]
+        if state == 0:
+            if c.isspace():
+                i+=1
+                state = 0
+            else:
+                start = i
+                state = 1
+        elif state == 1:
+            if es_aceptada(word) and not c.isspace():
+                i+=1
+                state = 1
+            else:
+                i-=1
+                state = 2
+        elif state == 2:
+            candidatos = []
+            candidatos = calc_candidatos(word)
+            if len(candidatos) > 0:
+                if candidatos[0] == "ERROR_TP":
+                    print ("ERROR_TP: La candena ingresada es invalida")
+
+                else:
+                    token = (candidatos[0], word)
+                    tokens.append(token)
+            else:
+                tokens = []
+                print ("ERROR: La cadena ingresada es invalida")
+                return tokens
+            i+=1
+            start = i
+            state = 0
+        else:
+            print("ERROR: Cadena no aceptada")
+    return tokens
+
+
+
+def es_aceptada(word):
+    candidatos = calc_candidatos(word)
+    if len(candidatos) > 0:
+        return True
+    else:
+        return False
+
+
+def calc_candidatos(word):
+    candidatos = []
+    for (clasi, afd) in Token_Clasificacion:
+          if afd(word):
+                candidatos.append(clasi)
+    return candidatos
+
+#print ("1", lexer("for{ x>5, y<=26 };"))
+#print ("2", lexer("while (abc - 6)*77 float 553 "))
+#print ("3", lexer("float hola := 123"))
+#print ("4", lexer("  % "))
+#print ("5", lexer("  != kkkk ;"))
+#print ("6", lexer(" if >= { 123 } ac / hola (10-5)"))
+#print ("7", lexer(" int >= 885232 + asd (x/655622) "))
+#print ("8", lexer(" abc123"))
+#print ("9", lexer("(x>4,55) int ((8*8)/(56 + 265)) ;"))
+#print ("10", lexer(" if 25 == true else 5"))
